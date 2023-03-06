@@ -2,7 +2,27 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(document).ready(function () {
-  // TODO: Add a listener for click events on the save button. This code should
+  
+  // TODO: Add code to display the current date in the header of the page. 
+  function currentDay(){
+  var dayId = $("#currentDay");
+  
+  daDay = dayjs().format('dddd, MMMM D');
+  daYear = dayjs().format(' YYYY');
+  daTime = dayjs().format('h:m:s A');
+  
+  var theDate =daDay + "th" + daYear;
+  // Shows current date 
+  console.log(theDate);
+  // Shows current time 
+  console.log(daTime);
+  dayId.text(daDay + "th" + daYear);
+}
+$(document).ready(function() {
+  currentDay();
+});
+
+// TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
@@ -19,20 +39,8 @@ $(document).ready(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
-function currentDay(){
-  var dayId = $("#currentDay");
-  
-  daDay = dayjs().format('dddd, MMMM D');
-  daYear = dayjs().format(' YYYY');
-  
-  var theDate =daDay + "th" + daYear;
-  console.log(theDate);
-  dayId.text(daDay + "th" + daYear);
-}
-$(document).ready(function() {
-  currentDay();
-});
+
+
 
 
 
