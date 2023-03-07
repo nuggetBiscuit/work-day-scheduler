@@ -3,13 +3,14 @@
 // in the html.
 $(document).ready(function () {
   
+  let daTime = dayjs().format('HH:m:ss A');
   // TODO: Add code to display the current date in the header of the page. 
   function currentDay(){
   var dayId = $("#currentDay");
   
-  daDay = dayjs().format('dddd, MMMM D');
-  daYear = dayjs().format(' YYYY');
-  daTime = dayjs().format('h:m:s A');
+  let daDay = dayjs().format('dddd, MMMM D');
+  let daYear = dayjs().format(' YYYY');
+  
   
   var theDate =daDay + "th" + daYear;
   // Shows current date 
@@ -21,6 +22,33 @@ $(document).ready(function () {
 $(document).ready(function() {
   currentDay();
 });
+
+function timeBlockId(){
+  var timeBlock = ["#hour-9", "#hour-10", "#hour-11", "#hour-12", "#hour-13", "#hour-14", "#hour-15", "#hour-16", "#hour-17"];
+  var currentHour = dayjs().format('HH');
+  console.log(currentHour);
+
+  $.each(timeBlock, function(index, id){
+    var blockHour = parseInt(id.substring(6)); // use substring(6) to get the hour value from the ID
+    if(blockHour == currentHour){
+      $(id).addClass("present");
+      console.log("present");
+    }
+    else if (blockHour < currentHour){
+      $(id).addClass("past");
+      console.log("past");   
+    }
+    else if (blockHour > currentHour){
+      $(id).addClass("future");
+      console.log("future");
+    }
+  });
+}
+
+$(document).ready(function() {
+  timeBlockId();
+});
+
 
 // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
